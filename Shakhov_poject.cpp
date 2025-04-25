@@ -120,5 +120,29 @@ void calculateNewDate() {
 }
 
 void calculateDaysToNextYear() {
+    int day, month, year;
     
+    cout << "Введите текущую дату (день месяц год): ";
+    cin >> day >> month >> year;
+
+
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        daysInMonth[1] = 29;
+    }
+
+
+    int daysLeft = 0;
+
+
+    daysLeft += daysInMonth[month - 1] - day;
+
+
+    for (int i = month; i < 12; i++) {
+        daysLeft += daysInMonth[i];
+    }
+
+    cout << "Количество дней до 1 января следующего года: " << daysLeft + 1 << endl;
 }
