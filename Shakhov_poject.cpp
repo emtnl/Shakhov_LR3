@@ -83,7 +83,40 @@ void inputDaysToAdd() {
 }
 
 void calculateNewDate() {
+    int day, month, year, daysToAdd;
     
+   
+    cout << "Введите текущую дату (день месяц год): ";
+    cin >> day >> month >> year;
+    cout << "Введите количество дней для прибавления: ";
+    cin >> daysToAdd;
+
+  
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+        daysInMonth[1] = 29; 
+    }
+
+    
+    day += daysToAdd;
+    while (day > daysInMonth[month - 1]) {
+        day -= daysInMonth[month - 1];
+        month++;
+        if (month > 12) {
+            month = 1;
+            year++;
+     
+            if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                daysInMonth[1] = 29;
+            } else {
+                daysInMonth[1] = 28;
+            }
+        }
+    }
+
+    cout << "Новая дата: " << day << "." << month << "." << year << endl;
 }
 
 void calculateDaysToNextYear() {
