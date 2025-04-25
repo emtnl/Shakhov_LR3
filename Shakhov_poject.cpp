@@ -76,7 +76,10 @@ void inputCurrentYear() {
 }
 
 void inputDaysToAdd() {
-    
+    int days;
+    cout << "Введите количество дней для прибавления: ";
+    cin >> days;
+    cout << "Количество дней для прибавления: " << days << endl;
 }
 
 void calculateNewDate() {
